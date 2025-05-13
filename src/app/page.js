@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { LineChart, BarChart, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Calendar, DollarSign, PieChart, Plus, Trash2, X, Filter } from 'lucide-react';
+import { Calendar, DollarSign, PieChart, Plus, Trash2, X, Filter, Target } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
   // State untuk data pengeluaran
@@ -19,7 +20,7 @@ export default function Home() {
   
   // Google Sheets API via Apps Script
   
-  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzR1iyPTo5okKYE59ValPbg3niCZqqu0VVHa64YgA-lEe7BhTJBp4fifdWmX6z8Nuyu/exec'
+  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxuv4v7qWXLP8TXOx56Ls8VQXTkjuuct-eDV7H9obi5VxAfVz8hvBScSRxed_u_UuG2/exec';
   // Kategori pengeluaran
   const categories = ['Makanan', 'Transportasi', 'Belanja', 'Hiburan', 'Tagihan', 'Anak', 'Lainnya'];
   
@@ -249,10 +250,13 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 text-gray-900">
       <header className="bg-blue-600 text-white p-4 shadow-md">
-        <div className="container mx-auto">
+        <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold flex items-center">
             <DollarSign className="mr-2" /> Aplikasi Tracking Pengeluaran
           </h1>
+          <Link href="/budget" className="text-white hover:text-blue-100 flex items-center">
+            <Target size={18} className="mr-1" /> Budget
+          </Link>
         </div>
       </header>
       
