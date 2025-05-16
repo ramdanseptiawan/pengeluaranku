@@ -19,7 +19,7 @@ export default function BudgetPage() {
   const [selectedMonthYear, setSelectedMonthYear] = useState('current'); // For filtering
   
   // Google Sheets Web App URL
-  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxuv4v7qWXLP8TXOx56Ls8VQXTkjuuct-eDV7H9obi5VxAfVz8hvBScSRxed_u_UuG2/exec';
+  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyp6PERcjEI7Kc6a_Y-PnAqRoWj8sJau1_kqpQ3Ti0_TJ_tHsEpuV_R1l85B5YYGGyP/exec';
   
   // Kategori pengeluaran
   const categories = ['Makanan', 'Transportasi', 'Belanja', 'Hiburan', 'Tagihan', 'Anak', 'Lainnya'];
@@ -573,5 +573,4 @@ export default function BudgetPage() {
         </div>
       </main>
     </div>
-  );
-}
+  );}

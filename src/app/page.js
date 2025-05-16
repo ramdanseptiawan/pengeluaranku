@@ -20,7 +20,7 @@ export default function Home() {
   
   // Google Sheets API via Apps Script
   
-  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxuv4v7qWXLP8TXOx56Ls8VQXTkjuuct-eDV7H9obi5VxAfVz8hvBScSRxed_u_UuG2/exec';
+  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyp6PERcjEI7Kc6a_Y-PnAqRoWj8sJau1_kqpQ3Ti0_TJ_tHsEpuV_R1l85B5YYGGyP/exec';
   // Kategori pengeluaran
   const categories = ['Makanan', 'Transportasi', 'Belanja', 'Hiburan', 'Tagihan', 'Anak', 'Lainnya'];
   
@@ -106,20 +106,18 @@ export default function Home() {
         new Date().toISOString() // timestamp saat update
       ]);
       
-      // Send data to Apps Script web app using no-cors
-      await fetch(`${WEBAPP_URL}?action=saveData`, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          data: values
-        })
-      });
+      // Create a form data object
+      const formData = new FormData();
+      formData.append('action', 'saveData');
+      formData.append('sheet', 'Sheet1');
+      formData.append('data', JSON.stringify(values));
       
-      // We can't check response status with no-cors
-      // Just assume it worked if no error was thrown
+      // Send data to Apps Script web app using FormData
+      await fetch(WEBAPP_URL, {
+        method: 'POST',
+        mode: 'no-cors', // This prevents CORS errors
+        body: formData
+      });
       
     } catch (err) {
       console.error('Error saving data:', err);
